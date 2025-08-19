@@ -49,6 +49,7 @@ type GseSender struct {
 func NewGseSender(cfg config.SenderConfig) sender.SenderInstance {
 	c := GseConfig{}
 	if err := cfg.To(&c); err != nil {
+		logger.Errorf("failed to decode GSE config: %v", err)
 		return nil
 	}
 	if c.EndPoint != "" {
